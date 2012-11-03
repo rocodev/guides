@@ -13,6 +13,11 @@
 
 ### [[Rails Convention About Controller| rails-convention-about-controller]]
 
+### 其他參考教材
+
+* https://github.com/bbatsov/ruby-style-guide
+* https://github.com/bbatsov/rails-style-guide
+* https://github.com/thoughtbot/guides/tree/master/best-practices
 
 ###  About Time 時區的細節
 
