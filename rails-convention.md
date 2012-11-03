@@ -24,8 +24,8 @@
 
 * TextMate
 
-  - 可以用 alt 按住做區域圈選， 搭配 # 鍵一次註解多行。
-  - 要在editor 的左邊顯示行號 請按 Option+Apple+L
+  - 可以用 `alt` 按住做區域圈選， 搭配 `#` 鍵一次註解多行。
+  - 要在editor 的左邊顯示行號 請按 `Option+Apple+L`
   - tab 要設為 Soft Tabs: 2
   - 一些 trick 的介紹網站 http://wiki.macromates.com/Main/Howtos
   - 推薦 how to exclude files and foleders from project drawer 把 public/system加進去，就不會因為圖片太多因素導致開很慢。

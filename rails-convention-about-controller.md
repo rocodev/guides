@@ -30,8 +30,31 @@ def load_answer
 end
 ```
 
-* 可以拆成 action 的就不要用 params 去做，如 論壇的精華區或 prefix https://github.com/techbang/forum/compare/bd263ff...d07cfcd
+* 可以拆成 action 的就不要用 params 去做。
+  避免 
+  
+  ```ruby
+  def index
+    case params[:action]
+    when "xxx"
+      xxx
+    when "yyy"
+      xxx
+    end
+  end
+  ```
+
+  應使用
+  ```ruby
+  def xxx
+    render :action => :index
+  end
+
+  def yyy
+    render :action => :index
+  end
+  ```
 * controller 裡的 action 應該與裡面做的事是一致的，不要掛羊頭賣狗肉
-  - https://github.com/techbang/forum/commit/8b3a063009f0d8870c945670518da56e11b03ba1
+  - http://d.pr/i/XsLi
 * controller 裡面不要直接寫 update_all 的 code, 應該用 class method 包起來, 在 controller 裡 call class method
-  - https://github.com/techbang/forum/commit/39e9577429277b055a2bbfc37d1314f3066a516f
+  - http://d.pr/i/zRwx

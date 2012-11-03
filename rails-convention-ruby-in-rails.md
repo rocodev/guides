@@ -30,7 +30,13 @@ Topic.find(:all, :conditions => { :id => nil}) # []
 https://gist.github.com/0b3acb50dd1554b1f937
 要傳值回去的條件要擺在上面，不要擺在下面，會傳到你沒有預期的值。
 
-* [[rails_request|request object detail]]
+* Rails 的 request object
+
+ - request.host : 當前 request 的 host name `example : "http://localhost/" #=> localhost`
+ - request.request_uri : 當前 request 的 uri （不含host）`example : "http://localhost/posts/1" #=> /post/1`
+ - request.remote_ip : 當前 request 者的 ip
+
+
 * 學習參考用投影片以及 application
  - Rails Best Practice http://www.slideshare.net/ihower/rails-best-practices
  - 禁止從 Redmine 學習寫 Rails Code，它的 code 太髒了，會造成 RD 走火入魔。適合學習的指南話應該是 [Refactoring Redmine](http://www.refactoringredmine.com/)

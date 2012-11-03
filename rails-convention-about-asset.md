@@ -6,5 +6,5 @@
 
 ### Asset Pipeline
 
-如何整理 Asset (TODO)
-加速 Asset Precompile
+* 如何整理 Asset (TODO)
+* 加速 Asset Precompile
