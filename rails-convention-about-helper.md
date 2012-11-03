@@ -1,0 +1,1 @@
+## Rails Convention About Helper
