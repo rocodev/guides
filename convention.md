@@ -9,4 +9,4 @@
 
 ## Git 相關技巧
 
-* [[開 remote branc| open remote branch]]
+* [[開 remote branch| open remote branch]]
