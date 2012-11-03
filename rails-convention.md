@@ -1,7 +1,7 @@
 ## Rails 開發要點
 
 
-### About Ruby Syntax
+### Ruby Syntax
 
 * 編輯器設定 soft tab (space=2)，以 2 格空白符號做為程式內縮距離（不分語言）。
 
@@ -16,44 +16,29 @@ Sublime Text2 設定, Settings Default =>
 
 * 函式如果只有一個參數，就不強制打 ()，但傳 object 進去處理時也是要有 () 
 * 函式如果有二個以上的參數，通通都要有 ()  
-
-``` ruby
-  link_to("Home", root_path)
-``` 
-
 * 定義函式時一定要有 ()
-
-``` ruby
-def render_page_title(title)
-  @page_title = title
-end
-```
-
 * 字串限定用雙引號包覆
+* 善用 `"#{str1} #{str3} "`等字串改寫技巧取代不需要的字串加法。
+* 變數名稱命名法需使用  `my_favorite_game `這種 snake 型命名法，嚴禁駱駝 `myFavoriteGame` 這種命名方式。在 Ruby 中，使用駱駝法命名的只能是 Class name 或者是 Module name
 
-``` ruby
- link_to("Hi! #{user.bname}", settings_path)
-```
-
-* 善用 "#{str1} #{str3} " 等字串改寫技巧取代不需要的字串加法。
-* 變數名稱命名法需使用  my_favorite_game 這種 snake 型命名法，嚴禁駱駝 myFavoriteGame 這種命名方式。在 Ruby 中，使用駱駝法命名的只能是 Class name 或者是 Module name
-
-* 可以用 if ，就避免用 unless ，除非 unless 較符合原意。
-* map 要用 { |c| c.foo }，不要用 do end。
+* 可以用 `if` ，就避免用 `unless` ，除非 `unless` 較符合原意。
+* map 要用 `{ |c| c.foo }`，不要用 do end。
 
 * [[ruby_method|基本函式介紹]]
 
-###  About Ruby in Rails 
+###  Ruby in Rails 
 
-* 如果要判斷空字串或空集合等，請用 xxx.blank?   
-** 不要用 xxx.empty? or xxx==""
-* 承上點的相反情形，如果要判斷字串或集合是否有任意成員，請用 xxx.present? 
-** " xxx".present? #=> true      
-** ["hi","hello"].present? #=> true  
-** [].present? #=> false  
+* 如果要判斷空字串或空集合等，請用 `xxx.blank?`   
+  - 不要用 `xxx.empty?` or `xxx==""`
+* 承上點的相反情形，如果要判斷字串或集合是否有任意成員，請用 `xxx.present?` 
+  - `" xxx".present?` #=> true      
+  - `["hi","hello"].present?` #=> true  
+  - `[].present?` #=> false  
 * 關於elsif
-** 使用elsif前先思考，處理的邏輯是否有關連性，若無請分成多個if去處理
-** 若有相關性，但必須使用到elsif，思考一下是否有更magic的方式去處理(ex: https://github.com/techbang/playgame/commit/67d9da0ce00b810201fd9d4e68b7dcd4733e915e)
+  - 使用elsif前先思考，處理的邏輯是否有關連性，若無請分成多個if去處理
+  - 若有相關性，但必須使用到elsif，思考一下是否有更magic的方式去處理(ex: http://d.pr/i/xNqr)
+  - 
+  - 
 * 禁止使用
 <pre>
 <code class="ruby">
