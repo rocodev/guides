@@ -6,7 +6,9 @@
 * `git commit -m '修改資訊'` commit 修改資訊
 * `git push origin t票號` 將完成的 t票號 push 到遠端 origin
 * 上 Github 發 pull request
-* 回 redmine，改狀態 [新建立 => 已解決]，貼 github link
+* 回 redmine，改狀態 [新建立 => 已解決]，貼 github pull request 上 ticket
+* 上 Skype，貼 redmine link
+*
 
 wording
 git pull
