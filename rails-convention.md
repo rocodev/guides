@@ -78,20 +78,21 @@ https://gist.github.com/0b3acb50dd1554b1f937
 * 儘量避免在 view 裡做 if , else 判斷，應用 helper 或 method 包裝邏輯。比如 @post.editable_by?(current_user)。而非直接在 view 寫 if / else 判斷 current_user 是否存在且是否作者。
 
 * 善用 helper  
-** h(word) -> plain text
-** s(html) -> 消毒 html
-** u(url) -> urlencode
-** truncate(word,:length => length , "...") -> 斷句
-*** 請勿寫成 truncate( word , 70) ，而要寫成 truncate( word , :length => 70) 
+ - h(word) -> plain text
+ - s(html) -> 消毒 html
+ - u(url) -> urlencode
+ - truncate(word,:length => length , "...") -> 斷句
+
+ *** 請勿寫成 truncate( word , 70) ，而要寫成 truncate( word , :length => 70) 
 
 * helper 也要用() 包起來 
 
 * 如果有要寫在頁面的 javascript，可使用 content_for :page_specific_javascript ，這樣就可以達到在</body>前執行的效果。
-** 當然layout也要記得定義 yield(:page_specific_javascript) 在正確的位置，沒必要的話script盡量放</body>前。
+ -  當然layout也要記得定義 yield(:page_specific_javascript) 在正確的位置，沒必要的話script盡量放</body>前。
 
-h1. About Static Files (Javascript/css/image/html...)
+### About Static Files (Javascript/css/image/html...)
 
-* 應該要放在 public 資料夾下，依照javascripts/stylesheets/images項目分類，html則依request url 路徑置放。
+* 應該要放在 public 資料夾下，依照 javascripts/stylesheets/images項目分類，html則依 request url 路徑置放。
 * css 用到的圖片應該要放在 stylesheets/image 底下，也就是css所在當前位置的image子資料夾下。
 
 * css 中我們有針對body上兩個指定瀏覽器才有的class類別(ie6 ,ie -> for ie7 and after )，也有針對不同controller 、action上不同的class類別，有需要針對特定版本或特定頁面設計時可多加利用。
@@ -113,35 +114,34 @@ h1. About Static Files (Javascript/css/image/html...)
 * 禁用 link_to @resource, form_for @resource , redirect_to @resource 此種 magic method。請拆開來老老實實寫，不要貪圖求快用這種寫法。
 ** 這種寫法在多個專案內已被證明：(1) 當作 STI 時，在 Application 內會大幅爆炸 (2) resource 的 model 與 controller 同名的時候雖然沒事。但一但要改版拆開名字時，即使用 git grep 檢查關鍵字還是會檢查不乾淨，造成改版後大量爆炸（因為無法用 git grep "resource_path" ）。
 
-* notice_stickie 記得用 () 包起來，但 redirect_to 不需要
+* 警告訊息可以使用 `redirec_to xxx_path, :flash => { :error => ""}` 也可使用 notice, warning
 * controller 裡嚴禁寫 view code
 * 請用善用 before_filter 確保主要物件是存在的。
-<pre>
-<code class="ruby">
+
+```ruby
 before_filter :load_answer, :only => [......]
 def load_answer
   @answer = Answer.find(params[:id])
 rescue ActiveRecord::RecordNotFound
   render_404
 end
-</code>
-</pre>
+```
 
 * 如果不是使用 primary key 而是其他 column 去找，則要加上 @!@ 來確保找不到資料時會 raise exception。
-<pre>
-<code class="ruby">
+
+```ruby
 before_filter :load_answer, :only => [......]
 def load_answer
   @answer = Answer.find_by_permalink!(params[:permalink])
   # ActiveRecord::RecordNotFound will be raised if no record is found
 end
-</code>
-</pre>
+```
+
 * 可以拆成 action 的就不要用 params 去做，如 論壇的精華區或 prefix https://github.com/techbang/forum/compare/bd263ff...d07cfcd
 * controller 裡的 action 應該與裡面做的事是一致的，不要掛羊頭賣狗肉
-** https://github.com/techbang/forum/commit/8b3a063009f0d8870c945670518da56e11b03ba1
+  - https://github.com/techbang/forum/commit/8b3a063009f0d8870c945670518da56e11b03ba1
 * controller 裡面不要直接寫 update_all 的 code, 應該用 class method 包起來, 在 controller 裡 call class method
-**  https://github.com/techbang/forum/commit/39e9577429277b055a2bbfc37d1314f3066a516f
+  - https://github.com/techbang/forum/commit/39e9577429277b055a2bbfc37d1314f3066a516f
 
 ###  About Model
 
