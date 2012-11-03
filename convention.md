@@ -4,7 +4,7 @@
 * 一律使用 Pow 掛起 project。
 * 本機重開 server，使用 `touch tmp/restart.txt`
 * 拉下來的 code 如果不能動，先 `bundle install` -> `rake db:migration` -> `touch tmp/restart.txt`
-* 如果新增了 migration、新增了 gem、修改了 config/config.yml、需要跑 task，push 之後請主動到 Skype 上告知。
+* 如果新增了 migration、新增了 gem、修改了 config/config.yml、需要跑 task 生資料，push 之後請主動到 Skype 上告知。
 * deploy 到機器上請主動到 skype 喊 `deploy to production/staging`
 
 ## 解票慣例
