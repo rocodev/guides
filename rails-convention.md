@@ -143,18 +143,17 @@ end
 * controller 裡面不要直接寫 update_all 的 code, 應該用 class method 包起來, 在 controller 裡 call class method
   - https://github.com/techbang/forum/commit/39e9577429277b055a2bbfc37d1314f3066a516f
 
-###  About Model
+##  About Model
 
 * model 吐出去的東西只能是純天然物質，如 字串、陣列、Hash 等。如果是製作 select option 需要塞字串，請至 helper 加料，嚴禁在 model 內加料。
 * many to many 的 named_scope 如果有 order => "xxx DESC" 會造成 join 的 table scan ，解法是拆 query。
 * 巢狀結構(同一 table 多對多），要用awesome_nested_set。
-** script/plugin install git://github.com/collectiveidea/awesome_nested_set.git
-** 這裡有簡單的說明：http://yearl.javaeye.com/blog/500929
+ -  script/plugin install git://github.com/collectiveidea/awesome_nested_set.git
+ - 這裡有簡單的說明：http://yearl.javaeye.com/blog/500929
 
 * self的使用
-** 狀況 1. Class method
-<pre>
-<code class="ruby">
+  - 狀況 1. Class method
+```ruby
 # controller
 
 @posts = Post.first_post # Post is a Class
@@ -164,12 +163,11 @@ end
 def self.hidden # 要加 self
    first
 end
+```
 
-</code>
-</pre>
-** 狀況 2. Instance method
-<pre>
-<code class="ruby">
+  - 狀況 2. Instance method
+  
+```ruby
 # controller
 
 @post = Post.first
@@ -180,30 +178,26 @@ end
 def is_published? # 不加 self
    aasm_state == 'published' && published_at <= Time.zone.now
 end
-</code>
-</pre>
-** 狀況 3. assignment 
-<pre>
-<code class="ruby">
+```
+ - 狀況 3. assignment 
+ 
+```ruby
 # Post model 
 
 def set_time
    self.published_at = Time.zone.now # assign value to attribute, 一定要加self
 end
+```
 
-</code>
-</pre>
-** 狀況 4. access 
-<pre>
-<code class="ruby">
+ - 狀況 4. access 
+```ruby
 # Post model 
 
 def set_time
    published_at # access attribute, 統一不加self
 end
 
-</code>
-</pre>
+```
 
 * method 的放置順序
 
