@@ -1,3 +1,5 @@
+## Rails Convention About Controller
+
 * application controller 每個頁面都會呼叫到，請特別小心使用 db query 。
 * 會有三個controller 以上公用的函式 應該要放到 application controller 
 * 如果是 model 自己的資料轉換 （如 year/month/date 的資料格式轉換），這責任應該在model ，而非 controller 
