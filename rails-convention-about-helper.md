@@ -6,3 +6,9 @@
 * helper 不要放 instance variable，應把 variable 改寫為 parameter 由外部傳入。 
 * 禁止在 helper 裡使用 yield 
 * 只要牽扯到圖都應該寫 helper
+
+
+#### TODO Section
+
+* link_to 的 blick
+* content_for 的 block
