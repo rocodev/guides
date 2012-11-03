@@ -1,5 +1,5 @@
 ## 第一次 push
-git push -u origin master
+`git push -u origin master`
 
 ## [編輯] 開 remote branch
 
