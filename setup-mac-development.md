@@ -5,14 +5,28 @@
 ## 系統套件
 
 1. 進行 Mac 系統更新
-2. 上 <https://developer.apple.com/downloads/index.action> 找 Command Line Tools for Xcode （須先註冊為 Developer，註冊不用錢 ) 安裝，裝完請重開機（保險起見）。
-3. Install Homebrew
-   
+2. 從 Apple Store 上取得 Xcode 4.4 安裝
+3. `Xcode -> Preferences -> Downloads tab then install the “Command Line Tools.” ` 裝完請重開機（保險起見）。
+
+## 安裝 Homebrew
+  
 ```
    $ /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
    $ brew install git
    $ brew update
 ```
+
+```
+brew tap homebrew/dupes
+brew install apple-gcc42
+```
+
+## 安裝 XQuartz
+
+安裝 ImageMagick 需先有 X11 的 support，OSX 10.8 拿掉了...
+
+http://xquartz.macosforge.org/landing
+
 
 ###  ImageMagick / MySQL
 
@@ -39,7 +53,7 @@ $ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
 若無法順利進行安裝，可換下載 [MySQL官網](http://dev.mysql.com/downloads/mysql/) 上的 Mac OS X ver. 10.6 (x86, 64-bit), DMG Archive 來安裝 MySQL。
   
 
-### 安裝 RVM 與 Ruby 1.9.2
+### 安裝 RVM 與 Ruby 1.9.3
 
 在建制 Rails 環境的時候，我們可能會有跑不同版本的 Ruby 或者不同的 getsemt 的需求。[Ruby Version Manager](https://rvm.beginrescueend.com/) 是一個能夠讓我們用很優雅的方式切換 Ruby 版本的工具。同時使用系統 Ruby，其實很容易弄髒環境和產生一些靈異現象的 bug。於是我們在建制環境時，通常第一時間就會裝起 RVM。
 
@@ -51,11 +65,11 @@ $ . ~/.profile
 $ source ~/.profile
 ```
     
-#### 安裝 Ruby 1.9.2
+#### 安裝 Ruby 1.9.3
 
 ```
-$ rvm install 1.9.2 --with-gcc=clang
-$ rvm 1.9.2 --default 
+$ rvm install 1.9.3 --with-gcc=clang
+$ rvm 1.9.3 --default 
 
 ```
 
@@ -67,10 +81,8 @@ $ rvm 1.9.2 --default
 ### 安裝必要 Ruby gems
 
 ```
-$ gem install rails -v=3.2.2
+$ gem install rails
 $ gem install mysql2
-$ gem install passenger
-$ gem install nokogiri
 $ gem install capistrano
 $ gem install capistrano-ext
 $ gem install delayed_job
@@ -109,14 +121,12 @@ $ curl get.pow.cx | sh
 
 因此若要讓 project 跑在 Pow 之下。以我的 wiki 為例 ：
 
-```  
-$ cd ~/.pow/
-$ ln -s ~/projects/wiki
-```  
+`cd ~/.pow/`
+`ln -s ~/projects/wiki`  
 
-打開瀏覽器，輸入 <http://wiki.dev> 就完成了。以往的 <http://localhost:3000/> 實在太噁心了，別再用它了！
+打開瀏覽器，輸入 http://wiki.dev 就完成了。以往的 http://localhost:3000/ 實在太噁心了，別再用它了！
 
-##### Note
+#### Note
 
 或者是直接在 project/wiki 下打 `powder link` 也可以。
 
@@ -129,9 +139,8 @@ $ ln -s ~/projects/wiki
 
 安裝方法：
 
-```
-$ gem install powder
-```    
+
+`$ gem install powder`
 
 通常我只拿來做 `powder restart` 和 `powder log` 而已。
 
@@ -141,9 +150,8 @@ $ gem install powder
 
 .rvmrc 內容如下：
 
-```
-rvm 1.9.2
-```
+`rvm 1.9.3`
+
 
 解決使用 Pow 後，無法掛上 PHP project 的問題
 
