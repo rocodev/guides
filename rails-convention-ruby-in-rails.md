@@ -1,3 +1,5 @@
+## Ruby in Rails
+
 * 如果要判斷空字串或空集合等，請用 `xxx.blank?`   
   - 不要用 `xxx.empty?` or `xxx==""`
 * 承上點的相反情形，如果要判斷字串或集合是否有任意成員，請用 `xxx.present?` 
