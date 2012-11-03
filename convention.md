@@ -9,7 +9,7 @@
 
 ## Rails Convention
 
-[[Rails Convention]]
+* [[Rails Convention]]
 
 ## Git 相關技巧
 
