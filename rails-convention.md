@@ -87,8 +87,8 @@ https://gist.github.com/0b3acb50dd1554b1f937
 
 * helper 也要用() 包起來 
 
-* 如果有要寫在頁面的 javascript，可使用 content_for :page_specific_javascript ，這樣就可以達到在</body>前執行的效果。
- -  當然layout也要記得定義 yield(:page_specific_javascript) 在正確的位置，沒必要的話script盡量放</body>前。
+* 如果有要寫在頁面的 javascript，可使用 content_for :page_specific_javascript ，這樣就可以達到在`</body>`前執行的效果。
+ -  當然layout也要記得定義 yield(:page_specific_javascript) 在正確的位置，沒必要的話script盡量放`</body>`前。
 
 ### About Static Files (Javascript/css/image/html...)
 
