@@ -7,7 +7,7 @@
 
 
 
-###  About View
+### [[Rails Convention About View| rails-convention-about-view]]
 
 * view 只處理「畫面顯示」相關的細節
 * 不要在 view 中做任何「拉」資料的動作，至少不應在view中做任何 db 操作。(側邊欄的實作例外，因為要上 cache，此時不應該在 application controller 下 query，因為會多出超多無用 query ）
