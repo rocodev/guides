@@ -16,13 +16,12 @@ Sublime Text2 設定, Settings Default =>
 
 * 函式如果只有一個參數，就不強制打 ()，但傳 object 進去處理時也是要有 () 
 * 函式如果有二個以上的參數，通通都要有 ()  
-**  (避免發生奇怪的paser bug跟保持專案一致性)**
 
 ``` ruby
-link_to("Home", root_path)
+  link_to("Home", root_path)
 ``` 
-* 定義函式時一定要有 ()
 
+* 定義函式時一定要有 ()
 
 ``` ruby
 def render_page_title(title)
