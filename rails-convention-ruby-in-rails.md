@@ -33,8 +33,6 @@ https://gist.github.com/0b3acb50dd1554b1f937
 * [[rails_request|request object detail]]
 * 學習參考用投影片以及 application
  - Rails Best Practice http://www.slideshare.net/ihower/rails-best-practices
- - 禁止從 Redmine 學習寫 Rails Code，它的 code 太髒了，會造成 RD 走火入魔。
- - 適合學習的指南話應該是 
-   [Refactoring Redmine](http://www.refactoringredmine.com/)
+ - 禁止從 Redmine 學習寫 Rails Code，它的 code 太髒了，會造成 RD 走火入魔。適合學習的指南話應該是 [Refactoring Redmine](http://www.refactoringredmine.com/)
  - http://jetpackweb.com/blog/2009/10/14/high-quality-ruby-on-rails-example-applications/
  - http://github.com/engineyard/rails_dev_directory
