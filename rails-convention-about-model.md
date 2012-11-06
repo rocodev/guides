@@ -8,7 +8,7 @@
 
 ### self的使用
 
-*  狀況 1. Class method
+#### 狀況 1. Class method
 
 ```ruby
 # controller
@@ -22,7 +22,7 @@ def self.hidden # 要加 self
 end
 ```
 
-* 狀況 2. Instance method 
+#### 狀況 2. Instance method 
 
 ```ruby
 # controller
@@ -37,7 +37,7 @@ def is_published? # 不加 self
 end
 ```
 
-* 狀況 3. assignment 
+#### 狀況 3. assignment 
 
 ```ruby
 # Post model 
@@ -47,7 +47,7 @@ def set_time
 end
 ```
 
-### 狀況 4. access 
+#### 狀況 4. access 
 
 ```ruby
 # Post model 
