@@ -20,7 +20,7 @@
 ## HTML /CSS Convention
 
 * [[HTML Convention]]
-* [[CSS Convention|css-convention]]
+* [[CSS Convention|html-css-convention]]
 
 ## Git 相關技巧
 
