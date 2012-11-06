@@ -1,2 +1,2 @@
 source :rubygems
-gem "gollum
+gem "gollum"
