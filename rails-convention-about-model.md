@@ -2,12 +2,13 @@
 
 * model 吐出去的東西只能是純天然物質，如 字串、陣列、Hash 等。如果是製作 select option 需要塞字串，請至 helper 加料，嚴禁在 model 內加料。
 * many to many 的 named_scope 如果有 order => "xxx DESC" 會造成 join 的 table scan ，解法是拆 query。
-* 巢狀結構(同一 table 多對多），要用awesome_nested_set。
- -  script/plugin install git://github.com/collectiveidea/awesome_nested_set.git
+* 巢狀結構(同一 table 多對多），要用 [awesome_nested_set](https://github.com/collectiveidea/awesome_nested_set)。
+
  - 這裡有簡單的說明：http://yearl.javaeye.com/blog/500929
 
 * self的使用
   - 狀況 1. Class method
+  
 ```ruby
 # controller
 
