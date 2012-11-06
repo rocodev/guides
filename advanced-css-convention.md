@@ -1,9 +1,8 @@
-## CSS Tricks
+# CSS Tricks
 
 教材：<http://www.codeschool.com/courses/css-cross-country>
 
-
-## Ch1
+<hr>
 
 ### Style 生效的位置
 
@@ -11,7 +10,7 @@
 * 在 `<head> </head>` 裡面
 * external link: 如 `link rel="stylesheet" href="style.css"`
 
-### Selectos
+### CSS Selectos
 
 * Element selector
 * Class selector
@@ -75,7 +74,7 @@ ref: [Taming Advanced CSS Selectors](http://coding.smashingmagazine.com/2009/08/
 }
 ```
 
-## Ch2 
+<hr>
 
 ### clearfix
 
@@ -153,7 +152,7 @@ p { color: #fff !important; }
 
 延伸閱讀：[Don’t use ID selectors in CSS]http://screwlewse.com/2010/07/dont-use-id-selectors-in-css/
 
-## Ch3
+<hr>
 
 ### box model
 
@@ -214,7 +213,7 @@ Affixes an element to a specific place in the window, where it will stay regardl
 
 延伸閱讀： [Understanding CSS z-index](https://developer.mozilla.org/en/Understanding_CSS_z-index)
 
-## Ch4
+<hr>
 
 ### 整理 CSS code
 
@@ -302,7 +301,7 @@ Collapsing margins will not occur when one or more block element has:
 [Eric Meyer's Reset CSS](http://meyerweb.com/eric/tools/css/reset/)
 [Normalize.css](http://necolas.github.com/normalize.css/)
 
-## Ch6
+<hr>
 
 ### Content Image 與 Layout image
 
@@ -339,7 +338,7 @@ crop {
 
 延伸閱讀：[Experiments with wide images](http://clagnut.com/sandbox/imagetest)
 
-## Ch7 
+<hr>
 
 ### 圖片取代文字技巧
 
@@ -395,7 +394,7 @@ Multiple images & states:
 
 延伸閱讀: [Spritecow](http://www.spritecow.com/)
 
-## Ch8
+<hr>
 
 ## psuedo class
 
