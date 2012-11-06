@@ -5,6 +5,7 @@
 
 ### [[Ruby in Rails | rails-convention-ruby-in-rails]]
 
+### [[Rails Convention About Model| rails-convention-about-model]]
 ### [[Rails Convention About View| rails-convention-about-view]]
 
 ### [[Rails Convention About Asset| rails-convention-about-asset]]
