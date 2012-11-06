@@ -139,8 +139,8 @@ ref: [Taming Advanced CSS Selectors](http://coding.smashingmagazine.com/2009/08/
 * 第三個數字：of class selectors
 * 第四個數字：of element seletors
 
-``` html
 
+```html
 p { color: #fff; }  # 0,0,0,1
 .intro { color: #98c7d4; } # 0,0,1,0
 #header { color: #444245; } # 0,1,0,0
