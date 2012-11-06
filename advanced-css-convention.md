@@ -139,18 +139,17 @@ ref: [Taming Advanced CSS Selectors](http://coding.smashingmagazine.com/2009/08/
 * 第三個數字：of class selectors
 * 第四個數字：of element seletors
 
+###### example
 
-```html
-p { color: #fff; }  # 0,0,0,1
-.intro { color: #98c7d4; } # 0,0,1,0
-#header { color: #444245; } # 0,1,0,0
-<h1 style="color: #000;">Mogul</h1> # 1,0,0,0
-p { color: #fff !important; }
-```  
+* `p { color: #fff; }`  # 0,0,0,1
+* `.intro { color: #98c7d4; }` # 0,0,1,0
+* `#header { color: #444245; }` # 0,1,0,0
+* `<h1 style="color: #000;">Mogul</h1>` # 1,0,0,0
+* `p { color: #fff !important; }`
 
 越大的可以把祖先蓋掉。
 
-延伸閱讀：[Don’t use ID selectors in CSS]http://screwlewse.com/2010/07/dont-use-id-selectors-in-css/
+延伸閱讀：[Don’t use ID selectors in CSS](http://screwlewse.com/2010/07/dont-use-id-selectors-in-css/)
 
 <hr>
 
@@ -279,7 +278,7 @@ Tags that are inline by default include `<span>`, `<a>`, `<em>`, `<img>`
 * text-align: center
 
 
-## Ch5
+<hr>
 
 ### margin 重疊問題
 
