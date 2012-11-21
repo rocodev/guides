@@ -23,6 +23,8 @@
 
 ## 必加設定
 
+### 自動對 HTML 縮排 
+
 `Preferences` -> `Key Bindings - User`
 
 ```
