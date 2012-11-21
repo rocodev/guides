@@ -16,9 +16,15 @@
 
 ## 必裝 Submlime Text2 套件
 
+### 自動對 Ruby 縮排 
+
 * [BeautifyRuby](https://github.com/CraigWilliams/BeautifyRuby)
 
 `Ctrl` + `Cmd` + `k` 自動對 Ruby 縮排 
+
+### Gist
+
+* [Gist](https://github.com/condemil/Gist)
 
 
 ## 必加設定
