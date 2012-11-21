@@ -41,4 +41,6 @@
 
 ## Solarized 布景
 
-<https://github.com/mybuddymichael/solarized-sublimetext2>
+`Cmd` + `Shift` + `p` -> `Install ...`
+
+選擇 Solarized Theme 佈景安裝。再透過 `Preferences` -> `Color Scheme`，換成 Solarize 布景
