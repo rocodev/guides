@@ -45,5 +45,8 @@ ZSH_THEME="agnoster"
 * `Preference` -> `Profiles` -> `Colors` -> `Load Presets` -> `Import`，載入 `iterm2-colors-solarized` 目錄下的兩個 itermcolors
 * `Preference` -> `Profiles` -> `Colors` -> `Load Presets`，載入 `Solarized Dark`。
 
+#### 替換掉 iTerm 字型
+
+* `Preference` -> `Profiles` -> `Text` 換成 Menlo 14 字體
 
 
