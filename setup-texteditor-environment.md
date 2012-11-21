@@ -38,3 +38,7 @@
 ```
 
 `Ctrl` + `Shift` + `r` 自動對 HTML 縮排 
+
+## Solarized 布景
+
+<https://github.com/mybuddymichael/solarized-sublimetext2>
