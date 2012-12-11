@@ -3,13 +3,13 @@
 
 ### Update and upgrade system
 
-`sudo apt-get update`
-`sudo apt-get upgrade`
+* `sudo apt-get update`
+* `sudo apt-get upgrade`
 
 ### Install mysql
 
-`sudo apt-get install mysql-server`
-`sudo apt-get install libmysqlclient-dev`
+* `sudo apt-get install mysql-server`
+* `sudo apt-get install libmysqlclient-dev`
 
 ### Changing the Time Zone
 
@@ -28,7 +28,7 @@ sudo passwd apps
 sudo vim /etc/sudoers
 ```
 
-* make apps have sudo power
+make apps have sudo power
 
 ### Install ruby
 
@@ -81,8 +81,8 @@ make install
 
 ### Install imagemagick
 
-`sudo apt-get remove imagemagick`
-`sudo apt-get install libmagickcore-dev libmagickwand-dev`
+* `sudo apt-get remove imagemagick`
+* `sudo apt-get install libmagickcore-dev libmagickwand-dev`
 
 
 ### Install rmagick
@@ -96,11 +96,11 @@ make install
 ### setup a script to control Nginx
 
 ```
-> cd
-> git clone git://github.com/jnstq/rails-nginx-passenger-ubuntu.git
-> sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx
-> sudo chown root:root /etc/init.d/nginx
-> sudo /etc/init.d/nginx restart
+cd
+git clone git://github.com/jnstq/rails-nginx-passenger-ubuntu.git
+sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx
+sudo chown root:root /etc/init.d/nginx
+sudo /etc/init.d/nginx restart
 ```
 
 ### set up nginx.conf
@@ -120,18 +120,18 @@ server {
 
 ### create folder for the project
 
-`sudo su apps`
-`cd ~`
-`mkdir ~/my_project`
-
+```
+sudo su apps
+cd ~
+mkdir ~/my_project
+```
 ### set up deploy key for apps 
 
-`ssh-keygen`
-
-`more ~/.ssh/id_rsa.pub`
-
-`pbcopy < ~/.ssh/id_rsa.pub`
-
+```
+ssh-keygen
+more ~/.ssh/id_rsa.pub
+pbcopy < ~/.ssh/id_rsa.pub
+```
 #### Add the SSH key to GitHub
 
 
