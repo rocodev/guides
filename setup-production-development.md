@@ -3,64 +3,76 @@
 
 ### Update and upgrade system
 
-> sudo apt-get update
-> sudo apt-get upgrade
+`sudo apt-get update`
+`sudo apt-get upgrade`
 
 ### Install mysql
-> sudo apt-get install mysql-server
-> sudo apt-get install libmysqlclient-dev
+
+`sudo apt-get install mysql-server`
+`sudo apt-get install libmysqlclient-dev`
 
 ### Changing the Time Zone
-> sudo dpkg-reconfigure tzdata
+
+`sudo dpkg-reconfigure tzdata`
 
 ### Install Build Tools and Library for Ruby 1.9.3
-> sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline5 libyaml-dev
+
+`sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline5 libyaml-dev`
 
 
 ### Create user: apps
 
-> sudo adduser apps
-> sudo passwd apps
-> sudo vim /etc/sudoers
+```
+sudo adduser apps
+sudo passwd apps
+sudo vim /etc/sudoers
+```
 
 * make apps have sudo power
 
 ### Install ruby
 
-> curl -L https://get.rvm.io | bash -s stable --ruby
-
-> source /home/apps/.rvm/scripts/rvm
+```
+curl -L https://get.rvm.io | bash -s stable --ruby
+source /home/apps/.rvm/scripts/rvm
+```
 
 ### Install Bundler
 
-> gem install bundler
+`gem install bundler`
 
 ### Install libcurl4-openssl-dev for passenger
 
-> sudo aptitude install libcurl4-openssl-dev
+`sudo aptitude install libcurl4-openssl-dev`
 
 ### Install XML parser
 
-> sudo apt-get install libxml2 libxml2-dev libxslt1-dev
+`sudo apt-get install libxml2 libxml2-dev libxslt1-dev`
 
 ### Nokogiri
-> gem install nokogiri
+
+`gem install nokogiri`
 
 ### Install node.js
-https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-> apt-get install python g++ make
-> mkdir ~/nodejs && cd $_
-> wget -N http://nodejs.org/dist/node-latest.tar.gz
-> tar xzvf node-latest.tar.gz && cd `ls -rd node-v*`
-> ./configure
-> make install
+
+<https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager>
+
+```
+apt-get install python g++ make
+mkdir ~/nodejs && cd $_
+wget -N http://nodejs.org/dist/node-latest.tar.gz
+tar xzvf node-latest.tar.gz && cd `ls -rd node-v*`
+./configure
+make install
+```
 
 ### Install passenger
-> gem install passenger
+
+`gem install passenger`
 
 ### Install nginx
 
-> which passenger-install-nginx-module | xargs rvmsudo
+`which passenger-install-nginx-module | xargs rvmsudo`
 
 ```
 # Choose "download, compile, and install Nginx for me"
@@ -69,24 +81,27 @@ https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
 ### Install imagemagick
 
-> sudo apt-get remove imagemagick
-
-> sudo apt-get install libmagickcore-dev libmagickwand-dev
+`sudo apt-get remove imagemagick`
+`sudo apt-get install libmagickcore-dev libmagickwand-dev`
 
 
 ### Install rmagick
-> gem install rmagick
+
+`gem install rmagick`
 
 ### Install git
 
-> sudo apt-get install git
+`sudo apt-get install git`
 
 ### setup a script to control Nginx
+
+```
 > cd
 > git clone git://github.com/jnstq/rails-nginx-passenger-ubuntu.git
 > sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx
 > sudo chown root:root /etc/init.d/nginx
 > sudo /etc/init.d/nginx restart
+```
 
 ### set up nginx.conf
 
@@ -94,51 +109,55 @@ https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
 #### insert following codes into the /opt/nginx/conf/nginx.conf
 
-<pre>
+```
 server {
       listen 80;
       server_name my_project.cc;
       root /home/apps/my_project/current/public;
       passenger_enabled on;
     }
-</pre>
+```
 
 ### create folder for the project
-> sudo su apps
-> cd ~
-> mkdir ~/my_project
+
+`sudo su apps`
+`cd ~`
+`mkdir ~/my_project`
 
 ### set up deploy key for apps 
-> ssh-keygen
-> more ~/.ssh/id_rsa.pub
-> pbcopy < ~/.ssh/id_rsa.pub
+
+`ssh-keygen`
+
+`more ~/.ssh/id_rsa.pub`
+
+`pbcopy < ~/.ssh/id_rsa.pub`
 
 #### Add the SSH key to GitHub
 
-```
-# browse https://github.com/rocodev/my_project
-# click "Admin"
-# click "Deploy keys"
-# click "Add deploy key"
-# input "Title"
-# Paste the key into the "Key" field
-# Click "Add key"
-# Confirm the action by entering your GitHub password
-```
 
-### set up authorized keys for developers
-> vim /home/apps/.ssh/authorized_keys
+* browse https://github.com/rocodev/my_project
+* click "Admin"
+* click "Deploy keys"
+* click "Add deploy key"
+* input "Title"
+* Paste the key into the "Key" field
+* Click "Add key"
+* Confirm the action by entering your GitHub password
+
+### Set up authorized keys for developers
+
+`vim /home/apps/.ssh/authorized_keys`
 
 
 Paste the ssh public keys into the "/home/apps/.ssh/authorized_keys" file
 
-### set up Capistrano 
+### Set up Capistrano 
 
-http://ruby-taiwan.org/wiki/deploy_to_production_practice
+<http://ruby-taiwan.org/wiki/deploy_to_production_practice>
 
-> vi /home/apps/my_project/shared/config/database.yml.production
+`vi /home/apps/my_project/shared/config/database.yml.production`
 
-<pre>
+```
 production:
   adapter: mysql2
   encoding: utf8
@@ -147,20 +166,24 @@ production:
   pool: 5
   username: root
   password: '1xsedqwdqd'
-</pre>
+```
 
 create "/my_project/Capfile"
+
 Paste following codes into the "/my_project/Capfile" file
-<pre>
+
+``` ruby
 load 'deploy/assets'
 Dir['vendor/gems/*/recipes/*.rb','vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
 load 'config/deploy' # remove this line to skip loading any of the default tasks
 load 'config/deploy/assets'
-</pre>
+```
 
 create "/config/deploy.rb"
+
 Paste following codes into the "/config/deploy.rb" file
-<pre>
+
+``` ruby
 # -*- encoding : utf-8 -*-
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano' #Using bundler with Capistrano
@@ -173,11 +196,13 @@ set :default_stage, "production"
 Cape do
   mirror_rake_tasks :dev
 end
-</pre>
+```
 
 create /config/deploy/production.rb
+
 Paste following codes into the "/config/deploy/production.rb" file
-<pre>
+
+``` ruby
 # -*- encoding : utf-8 -*-
 require 'rvm-capistrano'
 default_environment["PATH"] = "/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin"
@@ -245,11 +270,13 @@ namespace :remote_rake do
 end
 
 after "deploy:finalize_update", "my_tasks:symlink"
-</pre>
+```
 
 create /config/deploy/assets.rb
+
 Paste following codes into the "/config/deploy/assets.rb" file
-<pre>
+
+``` ruby
 # -*- encoding : utf-8 -*-
 
 # from https://github.com/AF83/capistrano-af83/blob/master/lib/capistrano/af83/deploy/assets.rb
@@ -280,20 +307,20 @@ namespace :deploy do
 
   end
 end
-</pre>
+```
 
 add 'rvm-capistrano' to Gemfile
 Paste following codes into the "/Gemfile" file, and bundle install
 
-<pre>
+``` ruby
   gem "rvm-capistrano"
-</pre>
+```
 
 initial deployment
-> cap deploy:setup
+`cap deploy:setup`
 
 deploy
-> cap deploy
+`cap deploy`
 
-migrate remote server
-> cap deploy:migrate
+remote db migrate
+`cap deploy:migrate`
