@@ -1,53 +1,52 @@
 ## Linode 主機安裝與 Capistrano
 
 
-### update and upgrade system
+### Update and upgrade system
+
 > sudo apt-get update
 > sudo apt-get upgrade
 
-### install mysql
+### Install mysql
 > sudo apt-get install mysql-server
 > sudo apt-get install libmysqlclient-dev
 
-### changing the Time Zone
+### Changing the Time Zone
 > sudo dpkg-reconfigure tzdata
 
-### install Build Tools
-> sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline5
+### Install Build Tools and Library for Ruby 1.9.3
+> sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline5 libyaml-dev
 
-### install ruby
-> wget ftp://ftp.ruby-lang.org//pub/ruby/1.9/ruby-1.9.2-p320.tar.gz
-> tar zxvf ruby-1.9.2-p320.tar.gz
-> cd ruby-1.9.2-p320
-> ./configure --prefix=/opt/ruby
-> make
-> sudo make install
 
-### set up ruby path for root 
-> echo "export PATH=/opt/ruby/bin:$PATH" >> ~/.bashrc && . ~/.bashrc
-> echo "alias sudo='sudo env PATH=$PATH'" >> ~/.bashrc && . ~/.bashrc
-> source ~/.bashrc
+### Create user: apps
 
-### set up ruby path for apps
-> su apps
-> echo "export PATH=/opt/ruby/bin:$PATH" >> ~/.bashrc && . ~/.bashrc
-> echo "alias sudo='sudo env PATH=$PATH'" >> ~/.bashrc && . ~/.bashrc
-> source ~/.bashrc
-> exit
+> sudo adduser apps
+> sudo passwd apps
+> sudo vim /etc/sudoers
 
-### install Bundler
-> sudo gem install bundler
+* make apps have sudo power
 
-### install cURL
+### Install ruby
+
+> curl -L https://get.rvm.io | bash -s stable --ruby
+
+> source /home/apps/.rvm/scripts/rvm
+
+### Install Bundler
+
+> gem install bundler
+
+### Install libcurl4-openssl-dev for passenger
+
 > sudo aptitude install libcurl4-openssl-dev
 
-### install XML parser
+### Install XML parser
+
 > sudo apt-get install libxml2 libxml2-dev libxslt1-dev
 
 ### Nokogiri
-> sudo gem install nokogiri
+> gem install nokogiri
 
-### install node.js
+### Install node.js
 https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 > apt-get install python g++ make
 > mkdir ~/nodejs && cd $_
@@ -56,36 +55,30 @@ https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 > ./configure
 > make install
 
-### install passenger 
-> sudo gem install passenger
+### Install passenger
+> gem install passenger
 
-### install nginx
-> sudo /opt/ruby/bin/passenger-install-nginx-module
+### Install nginx
+
+> which passenger-install-nginx-module | xargs rvmsudo
 
 ```
 # Choose "download, compile, and install Nginx for me"
 # Accept defaults for any other questions it asks you
 ```
 
-### install imagemagick
+### Install imagemagick
+
 > sudo apt-get remove imagemagick
 
-> sudo apt-get install libperl-dev gcc libjpeg62-dev libbz2-dev libtiff4-dev libwmf-dev zlib1g-dev libpng12-dev libx11-dev libxt-dev libxext-dev libxml2-dev libfreetype6-dev liblcms1-dev libexif-dev perl libjasper-dev libltdl-dev graphviz pkg-config libjpeg-dev
+> sudo apt-get install libmagickcore-dev libmagickwand-dev
 
-> wget ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
-> tar xvfz ImageMagick.tar.gz
-> cd ImageMagick-6.7.8-4/
-> ./configure
-> make
-> sudo make install
 
-### install ldconfig
-> sudo ldconfig
+### Install rmagick
+> gem install rmagick
 
-### install rmagick
-> sudo /opt/ruby/bin/ruby /opt/ruby/bin/gem install rmagick
+### Install git
 
-### install git
 > sudo apt-get install git
 
 ### setup a script to control Nginx
@@ -96,6 +89,7 @@ https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 > sudo /etc/init.d/nginx restart
 
 ### set up nginx.conf
+
 > vi /opt/nginx/conf/nginx.conf
 
 #### insert following codes into the /opt/nginx/conf/nginx.conf
@@ -185,6 +179,7 @@ create /config/deploy/production.rb
 Paste following codes into the "/config/deploy/production.rb" file
 <pre>
 # -*- encoding : utf-8 -*-
+require 'rvm-capistrano'
 default_environment["PATH"] = "/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin"
 
 set :application, "my_project"
@@ -201,6 +196,9 @@ set :deploy_to, "/home/apps/#{application}"
 set :runner, "apps"
 set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
+
+set :use_sudo, false
+set :rvm_ruby_string, '1.9.3'
 
 role :web, "my_project.cc"                          # Your HTTP server, Apache/etc
 role :app, "my_project.cc"                         # This may be the same as your `Web` server
@@ -282,6 +280,13 @@ namespace :deploy do
 
   end
 end
+</pre>
+
+add 'rvm-capistrano' to Gemfile
+Paste following codes into the "/Gemfile" file, and bundle install
+
+<pre>
+  gem "rvm-capistrano"
 </pre>
 
 initial deployment
