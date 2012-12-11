@@ -1,5 +1,7 @@
 ## Linode 主機安裝與 Capistrano
 
+### Ubuntu 12.04 + Ruby 1.9.3 with RVM deployment
+
 
 ### Update and upgrade system
 
