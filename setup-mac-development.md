@@ -68,7 +68,7 @@ $ source ~/.profile
 #### 安裝 Ruby 1.9.3
 
 ```
-$ rvm install 1.9.3 --with-gcc=clang
+$ rvm install 1.9.3
 $ rvm 1.9.3 --default 
 
 ```
