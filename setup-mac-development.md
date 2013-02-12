@@ -50,6 +50,23 @@ $ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
 
 ```
 
+*  安裝 PostgresSQL
+
+* 將 `export PATH=/usr/local/bin:$PATH` 貼到 `~/.zshenv`
+* source ~/.zshenv
+
+```
+# http://willbryant.net/software/mac_os_x/postgres_initdb_fatal_shared_memory_error_on_leopard
+
+$ sudo sysctl -w kern.sysv.shmall=65536
+$ sudo sysctl -w kern.sysv.shmmax=16777216
+
+$ brew install postgres --no-python
+$ initdb /usr/local/var/postgres -E utf8
+$ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+```
+
 若無法順利進行安裝，可換下載 [MySQL官網](http://dev.mysql.com/downloads/mysql/) 上的 Mac OS X ver. 10.6 (x86, 64-bit), DMG Archive 來安裝 MySQL。
   
 
